@@ -1,0 +1,24 @@
+# Maintainer: Nicolas Mommaerts (mrdfuse) <https://github.com/mrdfuse>
+pkgname=lighthugger-tui
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Terminal player for SomaFM with a visualizer that moves on the audio"
+arch=('x86_64')
+url="https://github.com/mrdfuse/lighthugger-tui"
+license=('MIT')
+depends=('alsa-lib' 'ffmpeg' 'gcc-libs' 'glibc')
+makedepends=('rust')
+options=('!lto')
+
+# Builds from the checkout this PKGBUILD lives in, so local changes are
+# picked up without having to push or tag first.
+build() {
+  cd "$startdir/.."
+  CARGO_TARGET_DIR="$srcdir/target" cargo build --release --locked
+}
+
+package() {
+  install -Dm755 "$srcdir/target/release/lighthugger-tui" "$pkgdir/usr/bin/lighthugger-tui"
+  install -Dm644 "$startdir/../LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$startdir/../README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+}
