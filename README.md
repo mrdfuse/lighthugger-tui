@@ -7,6 +7,8 @@ KDE app [Lighthugger](https://github.com/mrdfuse/lighthugger).
 > Unofficial app, not affiliated with SomaFM. SomaFM is listener-supported:
 > please consider [supporting them](https://somafm.com/support/).
 
+![Lighthugger TUI playing Drone Zone, with the Nostalgia for Infinity visualizer](docs/screenshot.png)
+
 ## Features
 
 - All stations with listener counts, station details, now playing and recently played
